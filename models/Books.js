@@ -27,9 +27,7 @@ const BooksSchema = new Schema({
                 required: true
             }
         }
-  },
-
-
+    },
 });
 
 const BooksCollection = mongoose.model("BooksCollection", BooksSchema);

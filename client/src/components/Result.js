@@ -29,7 +29,7 @@ export default function Result(props) {
             } 
         }
         saveBooksDB(data)
-        .then(res => console.log(res))
+        .then(res => setsaveLabel("Saved"))
     }
 }
     return (
@@ -42,7 +42,7 @@ export default function Result(props) {
                 {book.volumeInfo.description}
                 </Card.Text>
                 <Button variant="primary" data-id={book.onlineId} value={JSON.stringify(book)} onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : saveLabel}</Button>
-                <Button variant="primary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
+                <Button variant="secondary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
             </Card.Body>
             </Card>
         ))
