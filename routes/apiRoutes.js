@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const mongoose = require("mongoose");
 const { BooksCollection } = require("../models");
 
@@ -7,8 +9,16 @@ mongoose.connect(process.env.DBURI || "mongodb://localhost/lessondb", {
 });
 
 module.exports = function (app) {
+
+    app.get("/api/getbooksonline", (req, res) => {
+        const APIURL = "https://www.googleapis.com/books/v1/volumes?q=";
+        const key = `:keyes&key=${BooksAPIKey}`;
+        const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
+        axios.get(completeUrl)
+        .then(res => res.json(res.data.items))
+    }) 
+
     app.post("/api/save", ({body}, res) => {
-        console.log("Saving");
         BooksCollection.create(body)
         .then(book => res.json(book))
     })
@@ -21,7 +31,6 @@ module.exports = function (app) {
     });
 
     app.delete("/api/delete/:onlineId", (req, res) => {
-        console.log("Deleting");
         BooksCollection.deleteOne({"onlineId": req.params.onlineId})
         .then(book => {
             res.json(book);

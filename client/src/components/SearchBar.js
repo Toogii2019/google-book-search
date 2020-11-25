@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Row, Form, Button, Col} from 'react-bootstrap';
-import {getBooksOnline} from '../utils/API';
+import {getOnlineBooks} from '../utils/API';
 
 export default function SearchBar(props) {
     const [searchStr, setsearchStr] = useState("");
@@ -10,10 +10,9 @@ export default function SearchBar(props) {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
-        getBooksOnline(completeUrl)
+        getOnlineBooks()
         .then(res => {
-            props.setBooks(res.data.items)
+            props.setBooks(res.data)
         })
         
     }
