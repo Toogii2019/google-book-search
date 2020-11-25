@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Card, Button} from 'react-bootstrap';
 import {saveBooksDB, deleteBooksDB, getBooksDB} from '../utils/API';
 
 export default function Result(props) {
+    const [saveLabel, setsaveLabel] = useState("Save Book")
     const handleSaveOrDelete = (e) => {
     const myBook = JSON.parse(e.target.value)
     if (myBook.onlineId) {
@@ -20,7 +21,7 @@ export default function Result(props) {
             onlineId: myBook.id,
             volumeInfo: {
                 title: myBook.volumeInfo.title,
-                description: myBook.volumeInfo.description || "Not provided",
+                description: myBook.volumeInfo.description || "Not Description",
                 canonicalVolumeLink: myBook.volumeInfo.canonicalVolumeLink,
                 imageLinks: {
                     smallThumbnail: myBook.volumeInfo.imageLinks.smallThumbnail,
@@ -40,7 +41,7 @@ export default function Result(props) {
                 <Card.Text>
                 {book.volumeInfo.description}
                 </Card.Text>
-                <Button variant="primary" data-id={book.onlineId} value={JSON.stringify(book)} onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
+                <Button variant="primary" data-id={book.onlineId} value={JSON.stringify(book)} onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : saveLabel}</Button>
                 <Button variant="primary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
             </Card.Body>
             </Card>

@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const BooksSchema = new Schema({
   onlineId:  {
     type: String,
+    unique: true,
     required: true
   },
   volumeInfo: {
