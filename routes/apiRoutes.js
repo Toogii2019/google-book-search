@@ -16,9 +16,11 @@ module.exports = function (app) {
         const completeUrl = APIURL + req.params.searchStr.split(" ").join("+") + key;
         axios.get(completeUrl)
         .then(res => {
+            console.log(res.data.items)
             res.json(res.data.items)
         })
         .catch(err => {
+            console.log(err)
             res.json(err)
         }) 
     })

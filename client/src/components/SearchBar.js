@@ -9,7 +9,7 @@ export default function SearchBar(props) {
         e.preventDefault()
         getBooksOnline(searchStr)
         .then(res => {
-            props.setBooks(res.data.items)
+            props.setBooks(res.data)
         })
         
     }
