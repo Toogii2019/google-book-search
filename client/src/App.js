@@ -11,7 +11,7 @@ function App() {
       <div className="App">
         <Header setBooks={setBooks}></Header>
         <SearchBar books={books} setBooks={setBooks}></SearchBar>
-        <Result books={books}></Result>
+        <Result books={books} setBooks={setBooks}></Result>
       </div>
   );
 }
