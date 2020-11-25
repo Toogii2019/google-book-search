@@ -22,3 +22,12 @@
     margin: auto;
     padding: 30px;
 }
+
+@media(max-width: 768px) {
+    .result {
+        flex-direction: column;
+    }
+    .image-group {
+        margin: auto;
+    }
+}
