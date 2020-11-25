@@ -15,5 +15,12 @@ module.exports = function (app) {
     
     app.delete("/api/delete/:id", (req, res) => {
         console.log("Deleting");
+        BooksCollection.deleteOne({"onlineId": req.params.id})
+        .then(book => {
+            res.json(book);
+            })
+            .catch(err => {
+            res.json(err);
+            });
     })
 }

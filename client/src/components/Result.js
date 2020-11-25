@@ -8,8 +8,9 @@ export default function Result(props) {
         const myBook = JSON.parse(e.target.value)
         console.log(myBook);
         const data = {
+            onlineId: myBook.id,
             title: myBook.volumeInfo.title,
-            description: myBook.volumeInfo.description,
+            description: myBook.volumeInfo.description || "Not provided",
             image: myBook.volumeInfo.imageLinks.smallThumbnail,
             link: myBook.volumeInfo.canonicalVolumeLink
         }
