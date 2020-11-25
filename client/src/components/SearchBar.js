@@ -10,7 +10,7 @@ export default function SearchBar(props) {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        getOnlineBooks()
+        getOnlineBooks(searchStr)
         .then(res => {
             props.setBooks(res.data)
         })

@@ -10,10 +10,10 @@ mongoose.connect(process.env.DBURI || "mongodb://localhost/lessondb", {
 
 module.exports = function (app) {
 
-    app.get("/api/getbooksonline", (req, res) => {
+    app.get("/api/getbooksonline/:searchStr", (req, res) => {
         const APIURL = "https://www.googleapis.com/books/v1/volumes?q=";
-        const key = `:keyes&key=${BooksAPIKey}`;
-        const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
+        const key = `:keyes&key=${process.env.BOOKSAPIKEY}`;
+        const completeUrl = APIURL + req.params.searchStr.split(" ").join("+") + key;
         axios.get(completeUrl)
         .then(res => res.json(res.data.items))
     }) 
