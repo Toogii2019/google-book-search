@@ -1,6 +1,8 @@
 import React from 'react';
-import {Navbar, Nav} from 'react-bootstrap';
+// import {Navbar, Nav} from 'react-bootstrap';
 import {getBooksDB} from '../utils/API';
+import * as ReactBootstrap from 'react-bootstrap';
+
 
 
 export default function Header({setBooks}) {
@@ -12,12 +14,16 @@ export default function Header({setBooks}) {
         setBooks([]);
     }
     return (
-            <Navbar bg="primary" variant="dark">
-                <Navbar.Brand href="#home">Google Book Search</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link onClick={handleSavedBooks}>Saved Books</Nav.Link>
-                    <Nav.Link onClick={handleBookSearch}>Search New Books</Nav.Link>
-                </Nav>
-            </Navbar>
-        )
+        <ReactBootstrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <ReactBootstrap.Navbar.Brand href="#">Google Book Search</ReactBootstrap.Navbar.Brand>
+            <ReactBootstrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <ReactBootstrap.Navbar.Collapse id="responsive-navbar-nav">
+            <ReactBootstrap.Nav className="mr-auto">
+                <ReactBootstrap.Nav.Link onClick={handleSavedBooks}>Saved Books</ReactBootstrap.Nav.Link>
+                <ReactBootstrap.Nav.Link onClick={handleBookSearch}>Search New Books</ReactBootstrap.Nav.Link>
+            </ReactBootstrap.Nav>
+    
+            </ReactBootstrap.Navbar.Collapse>
+        </ReactBootstrap.Navbar>
+        );
 }
