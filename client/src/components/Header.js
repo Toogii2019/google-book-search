@@ -9,7 +9,7 @@ export default function Header({setBooks}) {
         .then(res => setBooks(res.data))
     }
     const handleBookSearch = (e) => {
-        console.log("New book search")
+        setBooks([]);
     }
     return (
             <Navbar bg="primary" variant="dark">

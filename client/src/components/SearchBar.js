@@ -11,7 +11,6 @@ export default function SearchBar(props) {
     const handleSearch = (e) => {
         e.preventDefault();
         const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
-        console.log(completeUrl);
         getBooksOnline(completeUrl)
         .then(res => {
             props.setBooks(res.data.items)
