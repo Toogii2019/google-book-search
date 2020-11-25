@@ -4,14 +4,10 @@ import {getBooksOnline} from '../utils/API';
 
 export default function SearchBar(props) {
     const [searchStr, setsearchStr] = useState("");
-    
-    const APIURL = "https://www.googleapis.com/books/v1/volumes?q=";
-    const key = `:keyes&key=AIzaSyAmSfsqsf-h0EXjU7wbTqOhpzIfsm87hWc`;
 
     const handleSearch = (e) => {
         e.preventDefault()
-        const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
-        getBooksOnline(completeUrl)
+        getBooksOnline(searchStr)
         .then(res => {
             props.setBooks(res.data.items)
         })
