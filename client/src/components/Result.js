@@ -9,7 +9,7 @@ export default function Result(props) {
         console.log(myBook);
         const data = {
             title: myBook.volumeInfo.title,
-            desciption: myBook.volumeInfo.description,
+            description: myBook.volumeInfo.description,
             image: myBook.volumeInfo.imageLinks.smallThumbnail,
             link: myBook.volumeInfo.canonicalVolumeLink
         }

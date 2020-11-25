@@ -14,9 +14,7 @@ export default function SearchBar(props) {
         console.log(completeUrl);
         getBooksOnline(completeUrl)
         .then(res => {
-            console.log(res.data.items)
             props.setBooks(res.data.items)
-            console.log(props.books)
         })
         
     }
