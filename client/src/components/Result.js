@@ -10,7 +10,6 @@ export default function Result(props) {
     if (myBook.onlineId) {
         deleteBooksDB(myBook.onlineId) 
         .then(res => {
-            console.log(res);
             getBooksDB()
             .then(res => props.setBooks(res.data))
 
@@ -50,7 +49,7 @@ export default function Result(props) {
             <div className="result">
                 <div className="image-group">
                     <img src={book.volumeInfo.imageLinks.smallThumbnail}  ></img>
-                    <Button variant="primary" onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
+                    <Button variant="primary" data-id={book.onlineId} value={JSON.stringify(book)}  onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
                     <Button variant="secondary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
                 </div>
                 <div className="text-group">
