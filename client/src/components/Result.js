@@ -1,6 +1,6 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
 import {Card, Button} from 'react-bootstrap';
-import {getBooksOnline, saveBooksDB} from '../utils/API';
+import {saveBooksDB} from '../utils/API';
 
 export default function Result(props) {
     console.log(props.books)
@@ -26,7 +26,7 @@ export default function Result(props) {
                 <Card.Text>
                 {book.volumeInfo.description}
                 </Card.Text>
-                <Button variant="primary" value={JSON.stringify(book)} onClick={handleSave}>Save Book</Button>
+                <Button variant="primary" value={JSON.stringify(book)} onClick={handleSave}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
                 <Button variant="primary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
             </Card.Body>
             </Card>

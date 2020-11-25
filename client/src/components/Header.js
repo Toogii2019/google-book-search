@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import {getBooksDB} from '../utils/API';
 
@@ -6,7 +6,7 @@ import {getBooksDB} from '../utils/API';
 export default function Header({setBooks}) {
     const handleSavedBooks = (e) => {
         getBooksDB()
-        .then(res => console.log(res.data))
+        .then(res => setBooks(res.data))
     }
     const handleBookSearch = (e) => {
         console.log("New book search")
