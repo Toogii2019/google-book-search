@@ -13,9 +13,16 @@ module.exports = function (app) {
         .then(book => res.json(book))
     })
     
+    app.get("/api/books", (req, res) => {
+        BooksCollection.find()
+        .then(books => {
+            res.json(books)
+        })
+    });
+
     app.delete("/api/delete/:id", (req, res) => {
         console.log("Deleting");
-        BooksCollection.deleteOne({"onlineId": req.params.id})
+        BooksCollection.deleteOne({"onlineId": req.params.onlineId})
         .then(book => {
             res.json(book);
             })
