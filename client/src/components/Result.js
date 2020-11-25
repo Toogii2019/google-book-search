@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, Button} from 'react-bootstrap';
-import {saveBooksDB, deleteBooksDB} from '../utils/API';
+import {saveBooksDB, deleteBooksDB, getBooksDB} from '../utils/API';
 
 export default function Result(props) {
     const handleSaveOrDelete = (e) => {
@@ -8,8 +8,10 @@ export default function Result(props) {
     if (myBook.onlineId) {
         deleteBooksDB(myBook.onlineId) 
         .then(res => {
-            myBook.onlineId = undefined;
-            props.setBooks([...props.books, myBook.onlineId])
+            console.log(res);
+            getBooksDB()
+            .then(res => props.setBooks(res.data))
+
             }
         )
     }
