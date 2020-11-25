@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import {Card, Button} from 'react-bootstrap';
+import React from 'react';
 import {saveBooksDB, deleteBooksDB, getBooksDB} from '../utils/API';
+import {Button} from 'react-bootstrap';
+import './Result.css';
 
 export default function Result(props) {
     var tempArray = []
@@ -43,19 +44,23 @@ export default function Result(props) {
     }
 }
     return (
-        props.books && props.books.map((book) => (
-            <Card style={{ width: '18rem', margin: '30px 100px 30px 100px'  }}>
-            <Card.Img variant="top" src={book.volumeInfo.imageLinks.smallThumbnail} />
-            <Card.Body>
-                <Card.Title>{book.volumeInfo.title}</Card.Title>
-                <Card.Text>
-                {book.volumeInfo.description}
-                </Card.Text>
-                <Button variant="primary" data-id={book.onlineId} value={JSON.stringify(book)} onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
-                <Button variant="secondary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
-            </Card.Body>
-            </Card>
-        ))
+        <div>
+        <h1 style={{color: 'darkblue'}}>Results</h1>
+        {props.books && props.books.map((book) => (
+            <div className="result">
+                <div className="image-group">
+                    <img src={book.volumeInfo.imageLinks.smallThumbnail}  ></img>
+                    <Button variant="primary" onClick={handleSaveOrDelete}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
+                    <Button variant="secondary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
+                </div>
+                <div className="text-group">
+                    <h3>{book.volumeInfo.title}</h3>
+                    <p>{book.volumeInfo.description}</p>
+                </div>
 
+            </div>
+        ))}
+        </div>
+        
     )
 }

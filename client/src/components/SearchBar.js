@@ -13,7 +13,9 @@ export default function SearchBar(props) {
         const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
         getBooksOnline(completeUrl)
         .then(res => {
-            props.setBooks(res.data.items)
+            if (res) {
+                props.setBooks(res.data.items)
+            }
         })
         
     }
