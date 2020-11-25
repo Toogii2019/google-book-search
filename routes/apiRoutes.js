@@ -20,7 +20,7 @@ module.exports = function (app) {
         })
     });
 
-    app.delete("/api/delete/:id", (req, res) => {
+    app.delete("/api/delete/:onlineId", (req, res) => {
         console.log("Deleting");
         BooksCollection.deleteOne({"onlineId": req.params.onlineId})
         .then(book => {
