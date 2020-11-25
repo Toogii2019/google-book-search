@@ -1,12 +1,15 @@
 import React from 'react';
 import {Card, Button} from 'react-bootstrap';
-import {saveBooksDB} from '../utils/API';
+import {saveBooksDB, deleteBooksDB} from '../utils/API';
 
 export default function Result(props) {
     console.log(props.books)
     const handleSave = (e) => {
         const myBook = JSON.parse(e.target.value)
-        console.log(myBook);
+        if (myBook.onlineId) {
+            deleteBooksDB(myBook.onlineId) 
+            .then(res => console.log(res))
+        }
         const data = {
             onlineId: myBook.id,
             title: myBook.volumeInfo.title,
