@@ -9,7 +9,7 @@ function App() {
   const [books, setBooks] = useState([]);
   return (
       <div className="App">
-        <Header></Header>
+        <Header setBooks={setBooks}></Header>
         <SearchBar books={books} setBooks={setBooks}></SearchBar>
         <Result books={books}></Result>
       </div>

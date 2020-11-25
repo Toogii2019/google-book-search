@@ -3,10 +3,10 @@ import {Navbar, Nav} from 'react-bootstrap';
 import {getBooksDB} from '../utils/API';
 
 
-export default function Header() {
+export default function Header({setBooks}) {
     const handleSavedBooks = (e) => {
         getBooksDB()
-        .then(res => console.log(res))
+        .then(res => console.log(res.data))
     }
     const handleBookSearch = (e) => {
         console.log("New book search")

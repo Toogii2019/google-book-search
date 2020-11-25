@@ -8,7 +8,8 @@ export default function SearchBar(props) {
     const APIURL = "https://www.googleapis.com/books/v1/volumes?q=";
     const key = `:keyes&key=AIzaSyAmSfsqsf-h0EXjU7wbTqOhpzIfsm87hWc`;
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault();
         const completeUrl = APIURL + searchStr.split(" ").join("+") + key;
         console.log(completeUrl);
         getBooksOnline(completeUrl)
