@@ -3,7 +3,6 @@ import {Card, Button} from 'react-bootstrap';
 import {saveBooksDB, deleteBooksDB} from '../utils/API';
 
 export default function Result(props) {
-    console.log(props.books)
     const handleSave = (e) => {
     const myBook = JSON.parse(e.target.value)
     if (myBook.onlineId) {
@@ -35,7 +34,7 @@ export default function Result(props) {
                 <Card.Text>
                 {book.volumeInfo.description}
                 </Card.Text>
-                <Button variant="primary" value={JSON.stringify(book)} onClick={handleSave}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
+                <Button variant="primary" data-id={book.onlineId} value={JSON.stringify(book)} onClick={handleSave}>{book.onlineId ? "Delete Book" : "Save Book"}</Button>
                 <Button variant="primary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
             </Card.Body>
             </Card>
