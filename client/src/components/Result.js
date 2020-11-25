@@ -13,10 +13,14 @@ export default function Result(props) {
     else {
         const data = {
             onlineId: myBook.id,
-            title: myBook.volumeInfo.title,
-            description: myBook.volumeInfo.description || "Not provided",
-            image: myBook.volumeInfo.imageLinks.smallThumbnail,
-            link: myBook.volumeInfo.canonicalVolumeLink
+            volumeInfo: {
+                title: myBook.volumeInfo.title,
+                description: myBook.volumeInfo.description || "Not provided",
+                canonicalVolumeLink: myBook.volumeInfo.canonicalVolumeLink,
+                imageLinks: {
+                    smallThumbnail: myBook.volumeInfo.imageLinks.smallThumbnail,
+                }
+            } 
         }
         saveBooksDB(data)
         .then(res => console.log(res))

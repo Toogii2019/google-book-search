@@ -7,25 +7,29 @@ const BooksSchema = new Schema({
     type: String,
     required: true
   },
-  title: {
-    type: String,
-    required: true
+  volumeInfo: {
+        title: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        canonicalVolumeLink: {
+            type: String,
+            required: true
+        },
+        imageLinks: {
+            smallThumbnail: {
+                type: String,
+                required: true
+            }
+        }
   },
-  description: {
-    type: String,
-    required: true
-  },
-  image: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    required: true
-  },
-},
 
-);
+
+});
 
 const BooksCollection = mongoose.model("BooksCollection", BooksSchema);
 
