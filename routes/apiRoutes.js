@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const { BooksCollection } = require("../models");
 
+mongoose.connect(process.env.DBURI || "mongodb://localhost/lessondb", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
+
 module.exports = function (app) {
     app.post("/api/save", ({body}, res) => {
         console.log("Saving");
