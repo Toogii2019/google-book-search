@@ -3,6 +3,7 @@ import {Card, Button} from 'react-bootstrap';
 import {saveBooksDB, deleteBooksDB, getBooksDB} from '../utils/API';
 
 export default function Result(props) {
+    var tempArray = []
     const handleSaveOrDelete = (e) => {
     const myBook = JSON.parse(e.target.value)
     if (myBook.onlineId) {
@@ -28,7 +29,17 @@ export default function Result(props) {
             } 
         }
         saveBooksDB(data)
-        .then(res => props.setBooks([...props.books]))
+        .then(res => {
+            props.books.map((book) => {
+                if (book.id === data.onlineId) {
+                    tempArray.push(data)
+                }
+                else{
+                    tempArray.push(book)
+                }
+            })
+            props.setBooks(tempArray)
+        })
     }
 }
     return (
