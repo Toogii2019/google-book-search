@@ -5,11 +5,12 @@ import {saveBooksDB, deleteBooksDB} from '../utils/API';
 export default function Result(props) {
     console.log(props.books)
     const handleSave = (e) => {
-        const myBook = JSON.parse(e.target.value)
-        if (myBook.onlineId) {
-            deleteBooksDB(myBook.onlineId) 
-            .then(res => console.log(res))
-        }
+    const myBook = JSON.parse(e.target.value)
+    if (myBook.onlineId) {
+        deleteBooksDB(myBook.onlineId) 
+        .then(res => console.log(res))
+    }
+    else {
         const data = {
             onlineId: myBook.id,
             title: myBook.volumeInfo.title,
@@ -20,6 +21,7 @@ export default function Result(props) {
         saveBooksDB(data)
         .then(res => console.log(res))
     }
+}
     return (
         props.books && props.books.map((book) => (
             <Card style={{ width: '18rem', margin: '30px 100px 30px 100px'  }}>
