@@ -53,8 +53,8 @@ export default function Result(props) {
                     <Button variant="secondary" onClick={() => window.location = book.volumeInfo.canonicalVolumeLink}>View</Button>
                 </div>
                 <div className="text-group">
-                    <h3>{book.volumeInfo.title}</h3>
-                    <p>{book.volumeInfo.description}</p>
+                    <h3 style={{textAlign: 'left'}}>{book.volumeInfo.title}</h3>
+                    <p style={{textAlign: 'left'}}>{book.volumeInfo.description}</p>
                 </div>
 
             </div>
